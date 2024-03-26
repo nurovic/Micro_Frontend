@@ -2,7 +2,7 @@ import React from "react";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { Provider, useSelector, useDispatch } from "react-redux";
 
-export const counterSlice = createSlice({
+export default counterSlice = createSlice({
   name: "counter",
   initialState: {
     count: 12,

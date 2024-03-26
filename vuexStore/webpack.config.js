@@ -4,7 +4,7 @@ const { VueLoaderPlugin } = require("vue-loader");
 const Dotenv = require('dotenv-webpack');
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:8082/",
+    publicPath: "http://localhost:8086/",
   },
 
   resolve: {
@@ -12,7 +12,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 8082,
+    port: 8086,
     historyApiFallback: true,
   },
 
@@ -46,13 +46,11 @@ module.exports = (_, argv) => ({
   plugins: [
     new VueLoaderPlugin(),
     new ModuleFederationPlugin({
-      name: "page",
+      name: "vuexStore",
       filename: "remoteEntry.js",
-      remotes: {
-        store: "store@http://localhost:8086/remoteEntry.js",
-      },
+      remotes: {},
       exposes: {
-        "./TopBar" : "./src/TopBar.vue"
+        "./Store": "./src/store.js"
       },
       shared: require("./package.json").dependencies,
     }),
